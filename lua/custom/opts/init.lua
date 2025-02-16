@@ -30,7 +30,7 @@ o.whichwrap:append '<>[]hl'
 o.showmode = false
 
 vim.schedule(function()
-  o.clipboard = 'unnamedplus'
+    o.clipboard = 'unnamedplus'
 end)
 
 -- Enable break indent
@@ -44,8 +44,8 @@ o.ignorecase = true
 o.smartcase = true
 
 o.signcolumn = 'yes' -- Keep signcolumn on by default
-o.updatetime = 250 -- Decrease update time
-o.timeoutlen = 300 -- Decrease mapped sequence wait time
+o.updatetime = 250   -- Decrease update time
+o.timeoutlen = 300   -- Decrease mapped sequence wait time
 
 -- Configure how new splits should be opened
 o.splitright = true
@@ -57,5 +57,5 @@ o.list = true
 o.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
 o.inccommand = 'split' -- Preview substitutions live, as you type!
-o.cursorline = true -- Show which line your cursor is on
-o.scrolloff = 10 -- Minimal number of screen lines to keep above and below the cursor.
+o.cursorline = true    -- Show which line your cursor is on
+o.scrolloff = 10       -- Minimal number of screen lines to keep above and below the cursor.

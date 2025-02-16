@@ -588,6 +588,10 @@ return {
 
   { -- Collection of various small independent plugins/modules
     'echasnovski/mini.nvim',
+    dependencies = {
+      'Lamby777/timewasted.nvim',
+    },
+
     config = function()
       -- Simple and easy statusline.
       --  You could remove this setup call if you don't like it,
@@ -600,7 +604,7 @@ return {
       -- cursor location to LINE:COLUMN
       ---@diagnostic disable-next-line: duplicate-set-field
       statusline.section_location = function()
-        return '%2l:%-2v'
+        return 'Line %2l Col %-2v | ' .. require('timewasted').get_fmt() .. ' '
       end
 
       -- ... and there is more!
@@ -794,8 +798,9 @@ return {
 
       tw.setup {
         time_formatter = function(total_sec)
-          local d, h, m, s = unpack(tw.dhms(total_sec))
-          local time_str = string.format('% 4dd %02dh %02dm %02ds', d, h, m, s)
+          local d, h, m, _ = unpack(tw.dhms(total_sec))
+          -- local time_str = string.format('% 4dd %02dh %02dm %02ds', d, h, m, s)
+          local time_str = string.format('% 4dd %02dh %02dm', d, h, m)
 
           return string.format('TWC: %s', time_str)
         end,

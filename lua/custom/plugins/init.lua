@@ -412,6 +412,21 @@ return {
         end,
     },
 
+
+    --------------------------------------------------------------------------------
+    -- Cellular Automaton: Give up? Run this and go for a walk!
+    --------------------------------------------------------------------------------
+
+    {
+        'Eandrju/cellular-automaton.nvim',
+        dependencies = {
+            'nvim-treesitter/nvim-treesitter',
+        },
+        keys = {
+            { '<Leader><Leader>m', ':CellularAutomaton make_it_rain<CR>' },
+        },
+    },
+
     -- { -- Autoformat
     --   'stevearc/conform.nvim',
     --   event = { 'BufWritePre' },
@@ -600,18 +615,48 @@ return {
             --  You could remove this setup call if you don't like it,
             --  and try some other statusline plugin
             local statusline = require 'mini.statusline'
-            statusline.setup { use_icons = vim.g.have_nerd_font }
+            statusline.setup {
+                use_icons = vim.g.have_nerd_font,
+                -- HOW TF DO YOU GET THIS TO WORKKKKKKKK THERE ARE LIKE 0 GOOD EXAMPLES ONLINE
+                --
+                -- content = {
+                --     active = function()
+                --         local diag_signs    = { ERROR = '!', WARN = '?', INFO = '@', HINT = '*' }
+                --
+                --         local mode, mode_hl = MiniStatusline.section_mode({ trunc_width = 120 })
+                --         local git           = MiniStatusline.section_git({ trunc_width = 40 })
+                --         local diff          = MiniStatusline.section_diff({ trunc_width = 75 })
+                --         local diagnostics   = MiniStatusline.section_diagnostics({ trunc_width = 75, signs = diag_signs })
+                --         local lsp           = MiniStatusline.section_lsp({ trunc_width = 75 })
+                --         -- local filename      = MiniStatusline.section_filename({ trunc_width = 140 })
+                --         local fileinfo      = MiniStatusline.section_fileinfo({ trunc_width = 120 })
+                --         local search        = MiniStatusline.section_searchcount({ trunc_width = 75 })
+                --
+                --         local location      = function() return 'Line %2l Col %-2v' end
+                --         local twc           = function() return require('timewasted').get_fmt() end
+                --
+                --         return MiniStatusline.combine_groups({
+                --             { hl = mode_hl,                 strings = { mode } },
+                --             { hl = 'MiniStatuslineDevinfo', strings = { git, diff, diagnostics, lsp } },
+                --
+                --             '%<', -- Mark general truncate point
+                --             -- { hl = 'MiniStatuslineFilename', strings = { filename } },
+                --             { hl = 'MiniStatuslineFilename', strings = { twc } },
+                --
+                --             '%=', -- End left alignment
+                --             { hl = 'MiniStatuslineFileinfo', strings = { fileinfo } },
+                --             { hl = mode_hl,                  strings = { search, location } },
+                --         })
+                --     end
+                -- }
+            }
 
             -- You can configure sections in the statusline by overriding their
-            -- default behavior. For example, here we set the section for
-            -- cursor location to LINE:COLUMN
+            -- default behavior.
             ---@diagnostic disable-next-line: duplicate-set-field
             statusline.section_location = function()
                 return 'Line %2l Col %-2v | ' .. require('timewasted').get_fmt() .. ' '
             end
-
-            -- ... and there is more!
-            --  Check out: https://github.com/echasnovski/mini.nvim
         end,
     },
 

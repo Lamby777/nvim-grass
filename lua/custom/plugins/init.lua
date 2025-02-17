@@ -1,3 +1,5 @@
+local map = require('custom.mappings.map')
+
 return {
     -- 'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
 
@@ -313,7 +315,7 @@ return {
             local servers = {
                 html = {},
                 cssls = {},
-                -- "ts_ls",
+                ts_ls = {},
                 jsonls = {},
 
                 bashls = {},
@@ -366,7 +368,7 @@ return {
                 'html-lsp',
                 'typescript-language-server',
                 'vue-language-server',
-                'deno',
+                -- 'deno',
                 'prettier',
                 'prettierd',
 
@@ -383,7 +385,7 @@ return {
                 -- "rust-analyzer",
 
                 -- other stuff
-                'efm',
+                -- 'efm',
                 'gdtoolkit',
                 'jdtls',
                 'omnisharp',
@@ -671,7 +673,20 @@ return {
         keys = {
             { '<C-n>', ':Neotree toggle<CR>', desc = 'NeoTree reveal', silent = true },
         },
-        opts = {},
+        opts = {
+            filesystem = {
+                window = {
+                    mappings = {
+                        ["I"] = "toggle_hidden",
+                    },
+                },
+            },
+            window = {
+                mappings = {
+                    ["W"] = "close_all_nodes",
+                },
+            },
+        },
     },
 
     {
@@ -688,63 +703,63 @@ return {
         end,
     },
 
-    { -- Linting
-        'mfussenegger/nvim-lint',
-        event = { 'BufReadPre', 'BufNewFile' },
-        config = function()
-            local lint = require 'lint'
-            lint.linters_by_ft = {
-                markdown = { 'markdownlint' },
-            }
-
-            -- To allow other plugins to add linters to require('lint').linters_by_ft,
-            -- instead set linters_by_ft like this:
-            -- lint.linters_by_ft = lint.linters_by_ft or {}
-            -- lint.linters_by_ft['markdown'] = { 'markdownlint' }
-            --
-            -- However, note that this will enable a set of default linters,
-            -- which will cause errors unless these tools are available:
-            -- {
-            --   clojure = { "clj-kondo" },
-            --   dockerfile = { "hadolint" },
-            --   inko = { "inko" },
-            --   janet = { "janet" },
-            --   json = { "jsonlint" },
-            --   markdown = { "vale" },
-            --   rst = { "vale" },
-            --   ruby = { "ruby" },
-            --   terraform = { "tflint" },
-            --   text = { "vale" }
-            -- }
-            --
-            -- You can disable the default linters by setting their filetypes to nil:
-            -- lint.linters_by_ft['clojure'] = nil
-            -- lint.linters_by_ft['dockerfile'] = nil
-            -- lint.linters_by_ft['inko'] = nil
-            -- lint.linters_by_ft['janet'] = nil
-            -- lint.linters_by_ft['json'] = nil
-            -- lint.linters_by_ft['markdown'] = nil
-            -- lint.linters_by_ft['rst'] = nil
-            -- lint.linters_by_ft['ruby'] = nil
-            -- lint.linters_by_ft['terraform'] = nil
-            -- lint.linters_by_ft['text'] = nil
-
-            -- Create autocommand which carries out the actual linting
-            -- on the specified events.
-            local lint_augroup = vim.api.nvim_create_augroup('lint', { clear = true })
-            vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWritePost', 'InsertLeave' }, {
-                group = lint_augroup,
-                callback = function()
-                    -- Only run the linter in buffers that you can modify in order to
-                    -- avoid superfluous noise, notably within the handy LSP pop-ups that
-                    -- describe the hovered symbol using Markdown.
-                    if vim.opt_local.modifiable:get() then
-                        lint.try_lint()
-                    end
-                end,
-            })
-        end,
-    },
+    -- { -- Linting
+    --     'mfussenegger/nvim-lint',
+    --     event = { 'BufReadPre', 'BufNewFile' },
+    --     config = function()
+    --         local lint = require 'lint'
+    --         lint.linters_by_ft = {
+    --             markdown = { 'markdownlint' },
+    --         }
+    --
+    --         -- To allow other plugins to add linters to require('lint').linters_by_ft,
+    --         -- instead set linters_by_ft like this:
+    --         -- lint.linters_by_ft = lint.linters_by_ft or {}
+    --         -- lint.linters_by_ft['markdown'] = { 'markdownlint' }
+    --         --
+    --         -- However, note that this will enable a set of default linters,
+    --         -- which will cause errors unless these tools are available:
+    --         -- {
+    --         --   clojure = { "clj-kondo" },
+    --         --   dockerfile = { "hadolint" },
+    --         --   inko = { "inko" },
+    --         --   janet = { "janet" },
+    --         --   json = { "jsonlint" },
+    --         --   markdown = { "vale" },
+    --         --   rst = { "vale" },
+    --         --   ruby = { "ruby" },
+    --         --   terraform = { "tflint" },
+    --         --   text = { "vale" }
+    --         -- }
+    --         --
+    --         -- You can disable the default linters by setting their filetypes to nil:
+    --         -- lint.linters_by_ft['clojure'] = nil
+    --         -- lint.linters_by_ft['dockerfile'] = nil
+    --         -- lint.linters_by_ft['inko'] = nil
+    --         -- lint.linters_by_ft['janet'] = nil
+    --         -- lint.linters_by_ft['json'] = nil
+    --         -- lint.linters_by_ft['markdown'] = nil
+    --         -- lint.linters_by_ft['rst'] = nil
+    --         -- lint.linters_by_ft['ruby'] = nil
+    --         -- lint.linters_by_ft['terraform'] = nil
+    --         -- lint.linters_by_ft['text'] = nil
+    --
+    --         -- Create autocommand which carries out the actual linting
+    --         -- on the specified events.
+    --         local lint_augroup = vim.api.nvim_create_augroup('lint', { clear = true })
+    --         vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWritePost', 'InsertLeave' }, {
+    --             group = lint_augroup,
+    --             callback = function()
+    --                 -- Only run the linter in buffers that you can modify in order to
+    --                 -- avoid superfluous noise, notably within the handy LSP pop-ups that
+    --                 -- describe the hovered symbol using Markdown.
+    --                 if vim.opt_local.modifiable:get() then
+    --                     lint.try_lint()
+    --                 end
+    --             end,
+    --         })
+    --     end,
+    -- },
 
     { -- Add indentation guides even on blank lines
         'lukas-reineke/indent-blankline.nvim',
@@ -793,7 +808,6 @@ return {
 
     {
         'Lamby777/timewasted.nvim',
-        lazy = false,
         config = function()
             local tw = require 'timewasted'
 
@@ -812,7 +826,6 @@ return {
     {
         'Lamby777/presence.nvim',
         branch = 'rebased',
-        lazy = false,
         config = function()
             -- The setup config table shows all available config options with their default values:
             require('presence').setup {
@@ -848,59 +861,21 @@ return {
             }
         end,
     },
-    --
-    --  -- {
-    --  --   "folke/zen-mode.nvim",
-    --  --   opts = {
-    --  --     -- your configuration comes here
-    --  --     -- or leave it empty to use the default settings
-    --  --     -- refer to the configuration section below
-    --  --   },
-    --  -- },
-    --
-    --  -- {
-    --  --   "github/copilot.vim",
-    --  --   lazy = false,
-    --  --   opts = {
-    --  --     --
-    --  --   },
-    --  -- },
-    --
-    --  {
-    --    'zbirenbaum/copilot.lua',
-    --    -- Lazy load when event occurs. Events are triggered
-    --    -- as mentioned in:
-    --    -- https://vi.stackexchange.com/a/4495/20389
-    --    -- event = "InsertEnter",
-    --    lazy = false,
-    --    -- You can also have it load at immediately at
-    --    -- startup by commenting above and uncommenting below:
-    --    -- lazy = false
-    --    opts = overrides.copilot,
-    --  },
-    --
-    --  {
-    --    'zbirenbaum/copilot-cmp',
-    --    lazy = false,
-    --    config = function()
-    --      require('copilot_cmp').setup()
-    --    end,
-    --  },
-    --
-    {
-        'tpope/vim-repeat',
-        lazy = false,
-    },
 
-    {
-        'tpope/vim-unimpaired',
-        lazy = false,
-    },
+    -- {
+    --   "folke/zen-mode.nvim",
+    --   opts = {
+    --     -- your configuration comes here
+    --     -- or leave it empty to use the default settings
+    --     -- refer to the configuration section below
+    --   },
+    -- },
 
-    {
-        'dahu/vim-fanfingtastic',
-        lazy = false,
-    },
+    { 'tpope/vim-repeat' },
+
+    { 'tpope/vim-unimpaired' },
+
+    { 'dahu/vim-fanfingtastic' },
 
     {
         'cameron-wags/rainbow_csv.nvim',

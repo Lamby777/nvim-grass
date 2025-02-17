@@ -5,11 +5,17 @@ vim.g.maplocalleader = ' '
 vim.g.have_nerd_font = true
 
 require 'custom.opts'
-
--- [[ Basic Keymaps ]]
---  See `:help vim.keymap.set()`
-
 require 'custom.mappings'
+
+vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
+-- dont list quickfix buffers
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "qf",
+    callback = function()
+        vim.opt_local.buflisted = false
+    end,
+})
+
 
 -------------------------------------------------------------------------------
 -------------------------------------------------------------------------------

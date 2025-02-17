@@ -2,17 +2,17 @@
 
 local XDG_OPEN_COPIED = '<cmd>!xdg-open <c-r>" &<cr><cr>'
 
-local map = function(keys, func, desc, mode, opts)
-    mode = mode or 'n'
-    opts = opts or {}
+local map = require('custom.mappings.map')
 
-    opts = vim.tbl_extend('force', { desc = desc }, opts)
-    vim.keymap.set(mode, keys, func, opts)
-end
+-- Unimpaired line movement maps
+map('<M-k>', '[e', 'Move line up', nil, { remap = true })
+map('<M-j>', ']e', 'Move line down', nil, { remap = true })
+map('<M-k>', '[egv', 'Move selected line(s) up', { 'v' }, { remap = true })
+map('<M-j>', ']egv', 'Move selected line(s) down', { 'v' }, { remap = true })
 
 -- Diagnostic keymaps
-map('q', 'b', 'Back (b)', { 'o', 'n', 'v' }, { remap = false })
-map('Q', 'B', 'Back (B)', { 'o', 'n', 'v' }, { remap = false })
+map('q', 'b', 'Back (b)', { 'o', 'n', 'v' })
+map('Q', 'B', 'Back (B)', { 'o', 'n', 'v' })
 map(';', ':', 'Command')
 map('<leader>o', '<cmd>qa<CR>', 'Quit All', { 'n', 'v' })
 map('<leader>O', '<cmd>qa!<CR>', 'Force Quit All', { 'n', 'v' })
@@ -27,7 +27,7 @@ map('<F1>', '<Esc>', 'F1 Escape', { 'n', 'i' }, { nowait = true, noremap = true 
 map('<leader>tt', '<cmd>term<cr><cmd>set nonumber<cr>i', 'New Terminal Tab', nil, { nowait = true })
 map('<leader>bb', '<cmd> enew <CR>', 'New Buffer', nil, { nowait = true })
 
-map('<leader>tw', '"lx"lph', 'Swap with letter after', nil, { nowait = true })
+map('<leader>tw', 'xp', 'Swap with letter after', nil, { nowait = true })
 map('<leader>bl', 'i<cr><Esc>', 'Break line', nil, { nowait = true })
 map('<leader>ba', 'a<cr><Esc>', 'Break line after', nil, { nowait = true })
 map('<leader>cb', 'o```<cr><cr>```<Esc>kk$a', 'Code Block (3 backticks)', nil, { nowait = true })
@@ -54,6 +54,12 @@ map('<leader>fh', '<cmd> Telescope help_tags <CR>', 'Help page', nil, { nowait =
 map('<leader>fo', '<cmd> Telescope oldfiles <CR>', 'Find oldfiles', nil, { nowait = true })
 map('<leader>fz', '<cmd> Telescope current_buffer_fuzzy_find <CR>', 'Find in current buffer', nil, { nowait = true })
 
+-- git stuff
+map('<leader>rh', '<cmd>Gitsigns reset_hunk<CR>', 'Reset hunk')
+map('<leader>gb', '<cmd>Gitsigns blame_line<CR>', 'Blame line')
+map('<leader>td', '<cmd>Gitsigns toggle_deleted<CR>', 'Toggle deleted')
+
+
 -- Visual mode mappings
 map('<leader>re', 'c<C-O>:set ri<CR><C-R>"<Esc>:set nori<CR>', 'Reverse Selection', { 'v' },
     { nowait = true, noremap = true })
@@ -70,7 +76,10 @@ map('<C-k>', '<C-w><C-k>', 'Move focus to the upper window')
 -- Bufferline
 map('<Tab>', '<cmd>BufferLineCycleNext<CR>', 'Next Tab')
 map('<S-Tab>', '<cmd>BufferLineCyclePrev<CR>', 'Prev Tab')
+map('<leader><Tab>', '<cmd>BufferLineMoveNext<CR>', 'Move Tab Right')
+map('<leader><S-Tab>', '<cmd>BufferLineMovePrev<CR>', 'Move Tab Left')
 map('<leader>x', '<cmd>bd<CR>', 'Close Tab')
+map('<leader>X', '<cmd>bd!<CR>', 'Close Tab (Force)')
 
 -- Comment toggling
 map('<leader>/', function()
@@ -83,12 +92,6 @@ map('<leader>/', "<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.vi
 -- Remap backslash to ; and , for convenience
 map('\\|', '<Plug>fanfingtastic_;', '')
 map('\\', '<Plug>fanfingtastic_,', '')
-
--- Unimpaired maps
-map('<M-k>', '[e', 'Move line up')
-map('<M-j>', ']e', 'Move line down')
-map('<M-k>', '[egv', 'Move selected line(s) up', { 'v' })
-map('<M-j>', ']egv', 'Move selected line(s) down', { 'v' })
 
 -- stuff from nvchad built-in mappings
 -- Insert mode mappings
@@ -109,8 +112,8 @@ map('<C-j>', '<C-w>j', 'Window down')
 map('<C-k>', '<C-w>k', 'Window up')
 map('<C-s>', '<cmd>w<CR>', 'Save file')
 map('<C-c>', '<cmd>%y+<CR>', 'Copy whole file')
-map('<leader>n>', '<cmd>set nu!<CR>', 'Toggle line number')
-map('<leader>rn>', '<cmd>set rnu!<CR>', 'Toggle relative number')
+map('<leader>n', '<cmd>set nu!<CR>', 'Toggle line number')
+map('<leader>rn', '<cmd>set rnu!<CR>', 'Toggle relative number')
 
 -- Buffers and cheatsheet
 map('<leader>b', '<cmd>enew<CR>', 'New buffer')

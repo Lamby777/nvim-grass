@@ -167,27 +167,6 @@ return {
             -- Enable Telescope extensions if they are installed
             pcall(require('telescope').load_extension, 'fzf')
             pcall(require('telescope').load_extension, 'ui-select')
-
-            -- See `:help telescope.builtin`
-            local builtin = require 'telescope.builtin'
-            vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Find Files' })
-            vim.keymap.set('n', '<leader>fw', builtin.live_grep, { desc = 'Live Grep' })
-            vim.keymap.set('n', '<leader>fk', builtin.keymaps, { desc = 'Find Keymaps' })
-            vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
-
-            -- It's also possible to pass additional configuration options.
-            --  See `:help telescope.builtin.live_grep()` for information about particular keys
-            vim.keymap.set('n', '<leader>fo', function()
-                builtin.live_grep {
-                    grep_open_files = true,
-                    prompt_title = 'Live Grep in Open Files',
-                }
-            end, { desc = 'Find in Open Files' })
-
-            -- Shortcut for searching your Neovim configuration files
-            vim.keymap.set('n', '<leader>sn', function()
-                builtin.find_files { cwd = vim.fn.stdpath 'config' }
-            end, { desc = '[S]earch [N]eovim files' })
         end,
     },
 

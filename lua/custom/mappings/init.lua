@@ -20,45 +20,47 @@ map('<leader>q', 'q', 'Record', { 'n', 'v' })
 map('<C-s>', '<cmd>w<CR>', 'CTRL + S to Save', { 'n', 'v' })
 
 -- Normal mode mappings
-map('gt', XDG_OPEN_COPIED, 'Open Link (from clipboard)', nil, { nowait = true })
-map('gx', 'yiW' .. XDG_OPEN_COPIED, 'Open Link (from iW)', nil, { nowait = true })
+map('gt', XDG_OPEN_COPIED, 'Open Link (from clipboard)')
+map('gx', 'yiW' .. XDG_OPEN_COPIED, 'Open Link (from iW)')
 map('<F1>', '<Esc>', 'F1 Escape', { 'n', 'i' }, { nowait = true, noremap = true })
 
-map('<leader>tt', '<cmd>term<cr><cmd>set nonumber<cr>i', 'New Terminal Tab', nil, { nowait = true })
-map('<leader>bb', '<cmd>enew<CR>', 'New Buffer', nil, { nowait = true })
+map('<leader>tt', '<cmd>term<cr><cmd>set nonumber<cr>i', 'New Terminal Tab')
+map('<leader>bb', '<cmd>enew<CR>', 'New Buffer')
 
-map('<leader>tw', 'xp', 'Swap with letter after', nil, { nowait = true })
-map('<leader>bl', 'i<cr><Esc>', 'Break line', nil, { nowait = true })
-map('<leader>ba', 'a<cr><Esc>', 'Break line after', nil, { nowait = true })
-map('<leader>cb', 'o```<cr><cr>```<Esc>kk$a', 'Code Block (3 backticks)', nil, { nowait = true })
-map('<leader>cl', 'S<Esc>', 'Clear Line', nil, { nowait = true })
+map('<leader>tw', 'xp', 'Swap with letter after')
+map('<leader>bl', 'i<cr><Esc>', 'Break line')
+map('<leader>ba', 'a<cr><Esc>', 'Break line after')
+map('<leader>cb', 'o```<cr><cr>```<Esc>kk$a', 'Code Block (3 backticks)')
+map('<leader>cl', 'S<Esc>', 'Clear Line')
 
 -- in a far and distant galaxy, inside my `:Telescope` i see,
 -- a pair of eyes peek back at me, -- he walks and talks and looks like me.
 -- sits around inside his house, from room to room, he moves about,
 -- fills his life with pointless things, and wonders how it all turns out...
 -- doodoodoo doo doo, doodoodoo doo doo 🎵🎵🎵
-map('<leader>cm', '<cmd>Telescope git_commits<CR>', 'Git commits', nil, { nowait = true })
-map('<leader>gs', '<cmd>Telescope git_status<CR>', 'Git status', nil, { nowait = true })
-map('<leader>pt', '<cmd>Telescope terms<CR>', 'Pick hidden term', nil, { nowait = true })
-map('<leader>th', '<cmd>Telescope themes<CR>', 'Search nvim themes', nil, { nowait = true })
-map('<leader>ma', '<cmd>Telescope marks<CR>', 'telescope bookmarks', nil, { nowait = true })
+-- local telescope = require 'telescope.builtin'
+map('<leader>cm', '<cmd>Telescope git_commits<CR>', 'Git commits')
+map('<leader>gs', '<cmd>Telescope git_status<CR>', 'Git status')
+map('<leader>pt', '<cmd>Telescope terms<CR>', 'Pick hidden term')
+map('<leader>th', '<cmd>Telescope themes<CR>', 'Search nvim themes')
+map('<leader>ma', '<cmd>Telescope marks<CR>', 'telescope bookmarks')
 
-map('<leader>hl', '<cmd>Telescope highlights<cr>', 'Treesitter highlights', nil, { nowait = true })
-map('<leader>ff', '<cmd> Telescope find_files <CR>', 'Find files', nil, { nowait = true })
-map('<leader>fa', '<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>', 'Find all', nil,
-    { nowait = true })
-map('<leader>fw', '<cmd> Telescope live_grep <CR>', 'Live grep', nil, { nowait = true })
-map('<leader>fb', '<cmd> Telescope buffers <CR>', 'Find buffers', nil, { nowait = true })
-map('<leader>fh', '<cmd> Telescope help_tags <CR>', 'Help page', nil, { nowait = true })
-map('<leader>fo', '<cmd> Telescope oldfiles <CR>', 'Find oldfiles', nil, { nowait = true })
-map('<leader>fz', '<cmd> Telescope current_buffer_fuzzy_find <CR>', 'Find in current buffer', nil, { nowait = true })
+map('<leader>hl', '<cmd>Telescope highlights<cr>', 'Treesitter highlights')
+map('<leader>ff', '<cmd>Telescope find_files<CR>', 'Find files')
+map('<leader>fa', '<cmd>Telescope find_files follow=true no_ignore=true hidden=true<CR>', 'Find all')
+map('<leader>fw', '<cmd>Telescope live_grep<CR>', 'Live grep')
+map("<leader>fk", "<cmd>Telescope keymaps<CR>", "Find Keymaps")
+map("<leader>sh", "<cmd>Telescope help_tags<CR>", "Search Help")
+map('<leader>fb', '<cmd>Telescope buffers<CR>', 'Find buffers')
+map('<leader>fh', '<cmd>Telescope help_tags<CR>', 'Help page')
+map('<leader>fo', '<cmd>Telescope oldfiles<CR>', 'Find oldfiles')
+map('<leader>fz', '<cmd>Telescope current_buffer_fuzzy_find<CR>', 'Find in current buffer')
+map('<leader>sn', '<cmd>Telescope live_grep cwd=' .. vim.fn.stdpath 'config' .. '<CR>', 'Search Neovim files', nil)
 
 -- git stuff
 map('<leader>rh', '<cmd>Gitsigns reset_hunk<CR>', 'Reset hunk')
 map('<leader>gb', '<cmd>Gitsigns blame_line<CR>', 'Blame line')
 map('<leader>td', '<cmd>Gitsigns toggle_deleted<CR>', 'Toggle deleted')
-
 
 -- Visual mode mappings
 map('<leader>re', 'c<C-O>:set ri<CR><C-R>"<Esc>:set nori<CR>', 'Reverse Selection', { 'v' },

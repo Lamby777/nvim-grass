@@ -25,7 +25,7 @@ map('gx', 'yiW' .. XDG_OPEN_COPIED, 'Open Link (from iW)', nil, { nowait = true 
 map('<F1>', '<Esc>', 'F1 Escape', { 'n', 'i' }, { nowait = true, noremap = true })
 
 map('<leader>tt', '<cmd>term<cr><cmd>set nonumber<cr>i', 'New Terminal Tab', nil, { nowait = true })
-map('<leader>bb', '<cmd> enew <CR>', 'New Buffer', nil, { nowait = true })
+map('<leader>bb', '<cmd>enew<CR>', 'New Buffer', nil, { nowait = true })
 
 map('<leader>tw', 'xp', 'Swap with letter after', nil, { nowait = true })
 map('<leader>bl', 'i<cr><Esc>', 'Break line', nil, { nowait = true })
@@ -114,10 +114,6 @@ map('<C-s>', '<cmd>w<CR>', 'Save file')
 map('<C-c>', '<cmd>%y+<CR>', 'Copy whole file')
 map('<leader>n', '<cmd>set nu!<CR>', 'Toggle line number')
 map('<leader>rn', '<cmd>set rnu!<CR>', 'Toggle relative number')
-
--- Buffers and cheatsheet
-map('<leader>b', '<cmd>enew<CR>', 'New buffer')
-map('<leader>ch', '<cmd>NvCheatsheet<CR>', 'Mapping cheatsheet')
 
 -- LSP formatting
 map('<leader>fm', function()

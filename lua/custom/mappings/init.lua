@@ -10,6 +10,10 @@ map('<M-j>', ']e', 'Move line down', nil, { remap = true })
 map('<M-k>', '[egv', 'Move selected line(s) up', { 'v' }, { remap = true })
 map('<M-j>', ']egv', 'Move selected line(s) down', { 'v' }, { remap = true })
 
+-- swap {j, k} with g&
+map('j', 'gj', '', '')
+map('k', 'gk', '', '')
+
 -- Diagnostic keymaps
 map('q', 'b', 'Back (b)', { 'o', 'n', 'v' })
 map('Q', 'B', 'Back (B)', { 'o', 'n', 'v' })

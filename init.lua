@@ -12,8 +12,10 @@ vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {f
 vim.api.nvim_create_autocmd("FileType", {
     pattern = "qf",
     callback = function()
+        -- this line prevents <CR> from working in quickfix for some stupid reason (prob plugin)
+        -- vim.opt_local.buftype = "nofile"
+
         vim.opt_local.bufhidden = "hide"
-        vim.opt_local.buftype = "nofile"
         vim.opt_local.buflisted = false
     end,
 })

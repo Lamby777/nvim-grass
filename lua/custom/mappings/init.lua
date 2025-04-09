@@ -11,8 +11,8 @@ map('<M-k>', '[egv', 'Move selected line(s) up', { 'v' }, { remap = true })
 map('<M-j>', ']egv', 'Move selected line(s) down', { 'v' }, { remap = true })
 
 -- swap {j, k} with g&
-map('j', 'gj', '', '')
-map('k', 'gk', '', '')
+map('j', 'gj', '', { 'n', 'v' })
+map('k', 'gk', '', { 'n', 'v' })
 
 -- Diagnostic keymaps
 map('q', 'b', 'Back (b)', { 'o', 'n', 'v' })
@@ -52,7 +52,7 @@ map('<leader>ma', '<cmd>Telescope marks<CR>', 'telescope bookmarks')
 map('<leader>hl', '<cmd>Telescope highlights<cr>', 'Treesitter highlights')
 map('<leader>ff', '<cmd>Telescope find_files<CR>', 'Find files')
 map('<leader>fa', '<cmd>Telescope find_files follow=true no_ignore=true hidden=true<CR>', 'Find all')
-map('<leader>fw', '<cmd>Telescope live_grep<CR>', 'Live grep')
+map('<leader>fw', '<cmd>Telescope live_grep follow=true<CR>', 'Live grep')
 map("<leader>fk", "<cmd>Telescope keymaps<CR>", "Find Keymaps")
 map("<leader>sh", "<cmd>Telescope help_tags<CR>", "Search Help")
 map('<leader>fb', '<cmd>Telescope buffers<CR>', 'Find buffers')
@@ -84,8 +84,8 @@ map('<Tab>', '<cmd>BufferLineCycleNext<CR>', 'Next Tab')
 map('<S-Tab>', '<cmd>BufferLineCyclePrev<CR>', 'Prev Tab')
 map('<leader><Tab>', '<cmd>BufferLineMoveNext<CR>', 'Move Tab Right')
 map('<leader><S-Tab>', '<cmd>BufferLineMovePrev<CR>', 'Move Tab Left')
-map('<leader>x', '<cmd>bd<CR>', 'Close Tab')
-map('<leader>X', '<cmd>bd!<CR>', 'Close Tab (Force)')
+map('<leader>x', '<cmd>Bd<CR>', 'Close Tab')
+map('<leader>X', '<cmd>Bd!<CR>', 'Close Tab (Force)')
 
 -- Comment toggling
 map('<leader>/', function()

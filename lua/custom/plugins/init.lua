@@ -148,6 +148,19 @@ return {
         },
         config = function()
             require('telescope').setup {
+                defaults = {
+                    vimgrep_arguments = {
+                        "rg",
+                        "-L",
+                        "--color=never",
+                        "--no-heading",
+                        "--with-filename",
+                        "--line-number",
+                        "--column",
+                        "--smart-case",
+                    },
+                },
+
                 -- You can put your default mappings / updates / etc. in here
                 --  All the info you're looking for is in `:help telescope.setup()`
                 --
@@ -949,6 +962,10 @@ return {
         opts = {},
     },
 
+    {
+        "famiu/bufdelete.nvim",
+    },
+
     -- TODO configure this
     {
         'akinsho/bufferline.nvim',
@@ -956,7 +973,7 @@ return {
         dependencies = 'nvim-tree/nvim-web-devicons',
         opts = {
             options = {
-                middle_mouse_command = 'bdelete! %d',
+                middle_mouse_command = 'Bdelete! %d',
             },
         },
     },

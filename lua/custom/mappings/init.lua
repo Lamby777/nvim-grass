@@ -82,8 +82,8 @@ map('<C-k>', '<C-w><C-k>', 'Move focus to the upper window')
 -- Bufferline
 map('<Tab>', '<cmd>BufferLineCycleNext<CR>', 'Next Tab')
 map('<S-Tab>', '<cmd>BufferLineCyclePrev<CR>', 'Prev Tab')
-map('<leader><Tab>', '<cmd>BufferLineMoveNext<CR>', 'Move Tab Right')
-map('<leader><S-Tab>', '<cmd>BufferLineMovePrev<CR>', 'Move Tab Left')
+map('<C-S-,>', '<cmd>BufferLineMovePrev<CR>', 'Move Tab Left')
+map('<C-S-.>', '<cmd>BufferLineMoveNext<CR>', 'Move Tab Right')
 map('<leader>x', '<cmd>Bd<CR>', 'Close Tab')
 map('<leader>X', '<cmd>Bd!<CR>', 'Close Tab (Force)')
 

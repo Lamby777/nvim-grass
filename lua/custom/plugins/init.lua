@@ -715,6 +715,9 @@ return {
         },
         opts = {
             filesystem = {
+                follow_current_file = {
+                    enabled = true,
+                },
                 window = {
                     mappings = {
                         ["I"] = "toggle_hidden",

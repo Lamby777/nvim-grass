@@ -144,7 +144,7 @@ map('<A-v>', function() require('nvterm.terminal').toggle 'vertical' end, 'Toggl
 -- TODO change these into vim.keymap.set later
 vim.cmd [[
     " fmt on save
-    autocmd BufWritePre * lua vim.lsp.buf.format({ async = false })
+    " autocmd BufWritePre * lua vim.lsp.buf.format({ async = false })
 
     " break at word boundaries, not characters
     :set formatoptions=l

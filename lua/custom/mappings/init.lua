@@ -38,7 +38,7 @@ map('<leader>cb', 'o```<cr><cr>```<Esc>kk$a', 'Code Block (3 backticks)')
 map('<leader>cl', 'S<Esc>', 'Clear Line')
 
 -- in a far and distant galaxy, inside my `:Telescope` i see,
--- a pair of eyes peek back at me, -- he walks and talks and looks like me.
+-- a pair of eyes peek back at me, he walks and talks and looks like me.
 -- sits around inside his house, from room to room, he moves about,
 -- fills his life with pointless things, and wonders how it all turns out...
 -- doodoodoo doo doo, doodoodoo doo doo 🎵🎵🎵

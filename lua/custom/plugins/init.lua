@@ -3,6 +3,11 @@ local map = require('custom.mappings.map')
 return {
     -- 'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
 
+    {
+        "mfussenegger/nvim-jdtls",
+        config = function() end,
+    },
+
     { -- Adds git related signs to the gutter, as well as utilities for managing changes
         'lewis6991/gitsigns.nvim',
         opts = {
@@ -456,6 +461,12 @@ return {
             -- i only added prettier for markdown because it wasn't doing anything
             -- only add stuff here if they don't already work
             formatters_by_ft = {
+                vue = { 'prettier' },
+                html = { 'prettier' },
+                css = { 'prettier' },
+
+                json = { 'prettier' },
+
                 markdown = { 'prettier' },
 
                 -- lua = { 'stylua' },
@@ -465,6 +476,15 @@ return {
                 -- You can use 'stop_after_first' to run the first available formatter from the list
                 -- javascript = { "prettierd", "prettier", stop_after_first = true },
             },
+
+            formatters = {
+                prettier = {
+                    -- only use prettier if there's a prettier config file or package.json entry
+                    require_cwd = true,
+
+                    prepend_args = { "--tab-width", "4" },
+                },
+            }
         },
     },
 
@@ -733,6 +753,7 @@ return {
             window = {
                 mappings = {
                     ["W"] = "close_all_nodes",
+                    ["z"] = "",
                 },
             },
         },

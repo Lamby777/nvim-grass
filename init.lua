@@ -20,24 +20,6 @@ vim.api.nvim_create_autocmd("FileType", {
     end,
 })
 
-
--------------------------------------------------------------------------------
--------------------------------------------------------------------------------
--------------------------------------------------------------------------------
--- Change icons for error/warn/etc.
-local function lspSymbol(name, icon)
-    local hl = 'DiagnosticSign' .. name
-    vim.fn.sign_define(hl, { text = icon, numhl = hl, texthl = hl })
-end
-
-lspSymbol('Error', '💩')
-lspSymbol('Warn', '🤓') -- erm, acktschuyually...
-lspSymbol('Hint', '💡')
-lspSymbol('Info', '󰋼')
--------------------------------------------------------------------------------
--------------------------------------------------------------------------------
--------------------------------------------------------------------------------
-
 -- Highlight when yanking (copying) text
 vim.api.nvim_create_autocmd('TextYankPost', {
     desc = 'Highlight when yanking (copying) text',

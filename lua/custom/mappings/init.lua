@@ -157,6 +157,8 @@ vim.cmd [[
     endfunction
 
     command! -nargs=0 DIndent call DIndent()
+
+    command! -nargs=0 Bufnr echo bufnr('%')
 ]]
 
 -- vim.keymap.set('t', '<C-x>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })

@@ -4,6 +4,15 @@ return {
     'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
 
     {
+        "jiaoshijie/undotree",
+        dependencies = "nvim-lua/plenary.nvim",
+        config = true,
+        keys = { -- load the plugin only when using it's keybinding:
+            { "<leader>u", "<cmd>lua require('undotree').toggle()<cr>" },
+        },
+    },
+
+    {
         "mfussenegger/nvim-jdtls",
         config = function() end,
     },

@@ -7,7 +7,9 @@ vim.g.have_nerd_font = true
 require 'custom.opts'
 require 'custom.mappings'
 
+-- open diagnostics if the cursor isn't moving
 vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
+
 -- dont list quickfix buffers
 vim.api.nvim_create_autocmd("FileType", {
     pattern = "qf",

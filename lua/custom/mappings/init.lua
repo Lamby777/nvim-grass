@@ -14,7 +14,7 @@ map('<M-j>', ']egv', 'Move selected line(s) down', { 'v' }, { remap = true })
 map('j', 'gj', '', { 'n', 'v' })
 map('k', 'gk', '', { 'n', 'v' })
 
--- Diagnostic keymaps
+-- Normal mode mappings
 map('q', 'b', 'Back (b)', { 'o', 'n', 'v' })
 map('Q', 'B', 'Back (B)', { 'o', 'n', 'v' })
 map(';', ':', 'Command')
@@ -22,7 +22,6 @@ map('<leader>o', '<cmd>qa<CR>', 'Quit All', { 'n', 'v' })
 map('<leader>O', '<cmd>qa!<CR>', 'Force Quit All', { 'n', 'v' })
 map('<leader>q', 'q', 'Record', { 'n', 'v' })
 
--- Normal mode mappings
 map('gt', XDG_OPEN_COPIED, 'Open Link (from clipboard)')
 map('gx', 'yiW' .. XDG_OPEN_COPIED, 'Open Link (from iW)')
 map('<F1>', '<Esc>', 'F1 Escape', { 'n', 'i' }, { nowait = true, noremap = true })

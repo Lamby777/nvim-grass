@@ -79,6 +79,7 @@ return {
             end,
         },
     },
+
     {                       -- Useful plugin to show you pending keybinds.
         'folke/which-key.nvim',
         event = 'VimEnter', -- Sets the loading event to 'VimEnter'
@@ -155,6 +156,7 @@ return {
                     return vim.fn.executable 'make' == 1
                 end,
             },
+
             { 'nvim-telescope/telescope-ui-select.nvim' },
 
             -- Useful for getting pretty icons, but requires a Nerd Font.
@@ -210,6 +212,7 @@ return {
             },
         },
     },
+
     {
         -- Main LSP Configuration
         'neovim/nvim-lspconfig',

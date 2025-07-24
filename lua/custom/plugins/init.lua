@@ -1009,7 +1009,8 @@ return {
     -- TODO configure this
     {
         'akinsho/bufferline.nvim',
-        version = '*',
+        -- version = '*',
+        tag = "v4.9.1",
         dependencies = 'nvim-tree/nvim-web-devicons',
         opts = {
             options = {

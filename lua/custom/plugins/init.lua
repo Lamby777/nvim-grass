@@ -221,9 +221,6 @@ return {
             'williamboman/mason-lspconfig.nvim',
             'WhoIsSethDaniel/mason-tool-installer.nvim',
 
-            -- read neoconf files
-            { 'folke/neoconf.nvim',      opts = {} },
-
             -- Useful status updates for LSP.
             { 'j-hui/fidget.nvim',       opts = {} },
 
@@ -231,17 +228,9 @@ return {
             'hrsh7th/cmp-nvim-lsp',
         },
         config = function()
+            -- TODO this is probably redundant
             local lspconfig = require 'lspconfig'
             lspconfig.gdscript.setup {}
-
-            -- -- volar vs tsserver, fucking annoying to set up
-            -- local using_volar = require('neoconf').get 'usingVolar'
-            -- local srv_to_use = using_volar and 'volar' or 'ts_ls'
-
-            -- lspconfig[srv_to_use].setup {
-            -- -- filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "json" },
-            -- filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
-            -- }
 
             --  This function gets run when an LSP attaches to a particular buffer.
             --    That is to say, every time a new file is opened that is associated with

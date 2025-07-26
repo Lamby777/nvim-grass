@@ -312,10 +312,31 @@ return {
             local capabilities = vim.lsp.protocol.make_client_capabilities()
             capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
 
+            local vue_language_server_path = vim.fn.stdpath('data') ..
+                "/mason/packages/vue-language-server/node_modules/@vue/language-server"
+
             local servers = {
                 html = {},
                 cssls = {},
-                ts_ls = {},
+                -- ts_ls = {},
+                vtsls = {
+                    filetypes = { 'vue', 'typescript', 'javascript', 'javascriptreact', 'typescriptreact' },
+                    settings = {
+                        vtsls = {
+                            tsserver = {
+                                globalPlugins = {
+                                    {
+                                        name = '@vue/typescript-plugin',
+                                        location = vue_language_server_path,
+                                        languages = { 'vue' },
+                                        configNamespace = 'typescript',
+                                    }
+                                },
+                            },
+                        },
+                    },
+                },
+
                 jsonls = {},
 
                 bashls = {},
@@ -366,7 +387,7 @@ return {
                 -- web dev stuff
                 'css-lsp',
                 'html-lsp',
-                'typescript-language-server',
+                -- 'typescript-language-server',
                 'vue-language-server',
                 -- 'deno',
                 'prettier',
@@ -395,7 +416,8 @@ return {
                 'php-cs-fixer',
                 'marksman',
             })
-            require('mason-tool-installer').setup { ensure_installed = ensure_installed }
+
+            require('mason-tool-installer').setup { ensure_installed }
 
             require('mason-lspconfig').setup {
                 handlers = {

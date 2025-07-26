@@ -312,31 +312,10 @@ return {
             local capabilities = vim.lsp.protocol.make_client_capabilities()
             capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
 
-            local vue_language_server_path = vim.fn.stdpath('data') ..
-                "/mason/packages/vue-language-server/node_modules/@vue/language-server"
-
             local servers = {
                 html = {},
                 cssls = {},
                 -- ts_ls = {},
-                vtsls = {
-                    filetypes = { 'vue', 'typescript', 'javascript', 'javascriptreact', 'typescriptreact' },
-                    settings = {
-                        vtsls = {
-                            tsserver = {
-                                globalPlugins = {
-                                    {
-                                        name = '@vue/typescript-plugin',
-                                        location = vue_language_server_path,
-                                        languages = { 'vue' },
-                                        configNamespace = 'typescript',
-                                    }
-                                },
-                            },
-                        },
-                    },
-                },
-
                 jsonls = {},
 
                 bashls = {},
@@ -429,8 +408,41 @@ return {
                         server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
                         require('lspconfig')[server_name].setup(server)
                     end,
+
                 },
+
+                -- thank you @tigion https://github.com/mason-org/mason-lspconfig.nvim/issues/587
+                -- FIX: Workaround for mason-lspconfig errors with
+                --      the new `vue_ls` config in nvim-lspconfig.
+                --
+                -- - https://github.com/neovim/nvim-lspconfig/commit/85379d02d3bac8dc68129a4b81d7dbd00c8b0f77
+                --
+                -- Don't start with `vue_ls` config from mason-lspconfig,
+                -- instead start directly with `vim.lsp.enable`.
+                --
+                automatic_enable = { exclude = { 'vue_ls' } },
+                vim.lsp.enable({ 'vue_ls' }),
             }
+
+            -- -- FUCK OFF!!!!!!!!!!!!! (IT WON'T LET ME USE VUE FILETYPE IN MASON-LSPCONFIG FOR SOME REASON?!!!!)
+            -- require("lspconfig").vtsls.setup({
+            --     filetypes = { 'vue', 'typescript', 'javascript', 'javascriptreact', 'typescriptreact' },
+            --     settings = {
+            --         vtsls = {
+            --             tsserver = {
+            --                 globalPlugins = {
+            --                     {
+            --                         name = '@vue/typescript-plugin',
+            --                         location = vim.fn.stdpath('data') ..
+            --                             "/mason/packages/vue-language-server/node_modules/@vue/language-server",
+            --                         languages = { 'vue' },
+            --                         configNamespace = 'typescript',
+            --                     }
+            --                 },
+            --             },
+            --         },
+            --     },
+            -- })
         end,
     },
 

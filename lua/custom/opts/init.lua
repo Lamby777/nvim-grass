@@ -6,7 +6,8 @@ o.numberwidth = 2
 o.ruler = false
 -- o.relativenumber = true
 
-o.mouse = 'a' -- allow using mouse
+o.mouse = 'a'          -- allow using mouse
+o.shellcmdflag = '-ic' -- run shells in interactive mode (for aliases)
 
 -- Indenting
 o.autoindent = true

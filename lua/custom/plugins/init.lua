@@ -1076,7 +1076,20 @@ return {
                     end,
                 },
                 {
-                    text = "   ",
+                    text = "    ",
+                },
+                {
+                    text = function(buffer)
+                        if buffer.is_modified then return "" end
+                        if buffer.is_hovered then return "󰅙" end
+                        return "󰅖"
+                    end,
+                    on_click = function(_, _, _, _, buffer)
+                        buffer:delete()
+                    end,
+                },
+                {
+                    text = "  ",
                 },
             },
         },

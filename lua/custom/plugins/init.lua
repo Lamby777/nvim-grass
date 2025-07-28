@@ -932,7 +932,7 @@ return {
 
     {
         'Lamby777/presence.nvim',
-        branch = 'rebased',
+        branch = 'main',
         config = function()
             -- The setup config table shows all available config options with their default values:
             require('presence').setup {

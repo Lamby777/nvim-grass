@@ -1031,17 +1031,57 @@ return {
         "famiu/bufdelete.nvim",
     },
 
-    -- TODO configure this
     {
-        'akinsho/bufferline.nvim',
-        -- version = '*',
-        tag = "v4.9.1",
-        dependencies = 'nvim-tree/nvim-web-devicons',
+        "willothy/nvim-cokeline",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "nvim-tree/nvim-web-devicons",
+            "stevearc/resession.nvim"
+        },
+        config = true,
+
+        -- https://github.com/willothy/nvim-cokeline#wrench-configuration
         opts = {
-            options = {
-                middle_mouse_command = 'Bdelete! %d',
+            show_if_buffers_are_at_least = 0,
+
+            buffers = {
+                focus_on_delete = 'prev',
+            },
+
+            history = {
+                enabled = false,
+            },
+
+            -- default: https://github.com/willothy/nvim-cokeline/blob/main/lua/cokeline/config.lua
+            components = {
+                {
+                    text = function(buffer) return "  " .. buffer.devicon.icon end,
+                    fg = function(buffer) return buffer.devicon.color end,
+                },
+                {
+                    text = function(buffer) return buffer.unique_prefix end,
+                    fg = function()
+                        return
+                            require("cokeline.hlgroups")
+                            .get_hl_attr("Comment", "fg")
+                    end,
+                    italic = true,
+                },
+                {
+                    text = function(buffer) return buffer.filename end,
+                    underline = function(buffer)
+                        if buffer.is_hovered and not buffer.is_focused then
+                            return true
+                        end
+                    end,
+                },
+                {
+                    text = "   ",
+                },
             },
         },
+
+        -- middle_mouse_command = 'Bdelete! %d',
     },
 
     {

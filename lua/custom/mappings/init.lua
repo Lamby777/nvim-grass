@@ -79,10 +79,8 @@ map('<C-j>', '<C-w><C-j>', 'Move focus to the lower window')
 map('<C-k>', '<C-w><C-k>', 'Move focus to the upper window')
 
 -- Bufferline
-map('<Tab>', '<cmd>bnext<cr>', 'Next Tab')
-map('<S-Tab>', '<cmd>bprev<cr>', 'Prev Tab')
--- map('<Tab>', '<Plug>(cokeline-focus-next)', 'Next Tab')
--- map('<S-Tab>', '<Plug>(cokeline-focus-prev)', 'Prev Tab')
+map('<Tab>', '<Plug>(cokeline-focus-next)', 'Next Tab')
+map('<S-Tab>', '<Plug>(cokeline-focus-prev)', 'Prev Tab')
 map('<C-S-,>', '<Plug>(cokeline-switch-prev)', 'Move Tab Left')
 map('<C-S-.>', '<Plug>(cokeline-switch-next)', 'Move Tab Right')
 map('<leader>x', '<cmd>Bd<CR>', 'Close Tab')

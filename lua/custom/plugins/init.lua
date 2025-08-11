@@ -941,7 +941,8 @@ return {
                 blacklist_repos = {
                     -- hmm... :3
                     'npxTSC/god',
-                    'Tea-Client',
+                    'Lamby777/days-since',
+                    'npxTSC/Tea-Client',
                 },
 
                 editing_text = 'Adding bugs to `%s`',

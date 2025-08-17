@@ -424,6 +424,33 @@ return {
                 vim.lsp.enable({ 'vue_ls' }),
             }
 
+            -- won't do anything if i put this in the servers table,
+            -- but it works fine when manually called like this. ????
+            require("lspconfig").jsonnet_ls.setup({
+                settings = {
+                    -- ext_vars = {
+                    --     foo = 'bar',
+                    -- },
+                    formatting = {
+                        Indent = 4,
+
+                        -- default values
+                        -- MaxBlankLines       = 2,
+                        -- StringStyle         = 'single',
+                        -- CommentStyle        = 'slash',
+                        -- PrettyFieldNames    = true,
+                        -- PadArrays           = false,
+                        -- PadObjects          = true,
+                        -- SortImports         = true,
+                        -- UseImplicitPlus     = true,
+                        -- StripEverything     = false,
+                        -- StripComments       = false,
+                        -- StripAllButComments = false,
+                    },
+                },
+            })
+
+
             -- FUCK OFF!!!!!!!!!!!!! (IT WON'T LET ME USE VUE FILETYPE IN MASON-LSPCONFIG FOR SOME REASON?!!!!)
             require("lspconfig").vtsls.setup({
                 filetypes = { 'vue', 'typescript', 'javascript', 'javascriptreact', 'typescriptreact' },

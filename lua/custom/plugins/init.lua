@@ -220,6 +220,10 @@ return {
             auto_close = true,
             -- auto_open = true,
             warn_no_results = false,
+            win = {
+                position = "right",
+                size = 0.5,
+            }
         },
         cmd = "Trouble",
         keys = {

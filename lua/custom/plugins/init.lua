@@ -479,7 +479,7 @@ return {
                     --     foo = 'bar',
                     -- },
                     formatting = {
-                        Indent = 4,
+                        -- Indent = 4,
 
                         -- default values
                         -- MaxBlankLines       = 2,
@@ -1016,7 +1016,7 @@ return {
                     -- hmm... :3
                     'npxTSC/god',
                     'Lamby777/days-since',
-                    'npxTSC/Tea-Client',
+                    'Tea-Client',
                 },
 
                 editing_text = 'Adding bugs to `%s`',

@@ -276,8 +276,7 @@ return {
         },
         config = function()
             -- TODO this is probably redundant
-            local lspconfig = require 'lspconfig'
-            lspconfig.gdscript.setup {}
+            -- vim.lsp.config("gdscript").setup {}
 
             --  This function gets run when an LSP attaches to a particular buffer.
             --    That is to say, every time a new file is opened that is associated with
@@ -453,7 +452,7 @@ return {
                         -- by the server configuration above. Useful when disabling
                         -- certain features of an LSP (for example, turning off formatting for ts_ls)
                         server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
-                        require('lspconfig')[server_name].setup(server)
+                        vim.lsp.config(server_name).setup(server)
                     end,
 
                 },
@@ -473,50 +472,50 @@ return {
 
             -- won't do anything if i put this in the servers table,
             -- but it works fine when manually called like this. ????
-            require("lspconfig").jsonnet_ls.setup({
-                settings = {
-                    -- ext_vars = {
-                    --     foo = 'bar',
-                    -- },
-                    formatting = {
-                        -- Indent = 4,
-
-                        -- default values
-                        -- MaxBlankLines       = 2,
-                        -- StringStyle         = 'single',
-                        -- CommentStyle        = 'slash',
-                        -- PrettyFieldNames    = true,
-                        -- PadArrays           = false,
-                        -- PadObjects          = true,
-                        -- SortImports         = true,
-                        -- UseImplicitPlus     = true,
-                        -- StripEverything     = false,
-                        -- StripComments       = false,
-                        -- StripAllButComments = false,
-                    },
-                },
-            })
+            -- vim.lsp.config("jsonnet_ls").setup({
+            --     settings = {
+            --         -- ext_vars = {
+            --         --     foo = 'bar',
+            --         -- },
+            --         formatting = {
+            --             -- Indent = 4,
+            --
+            --             -- default values
+            --             -- MaxBlankLines       = 2,
+            --             -- StringStyle         = 'single',
+            --             -- CommentStyle        = 'slash',
+            --             -- PrettyFieldNames    = true,
+            --             -- PadArrays           = false,
+            --             -- PadObjects          = true,
+            --             -- SortImports         = true,
+            --             -- UseImplicitPlus     = true,
+            --             -- StripEverything     = false,
+            --             -- StripComments       = false,
+            --             -- StripAllButComments = false,
+            --         },
+            --     },
+            -- })
 
 
             -- FUCK OFF!!!!!!!!!!!!! (IT WON'T LET ME USE VUE FILETYPE IN MASON-LSPCONFIG FOR SOME REASON?!!!!)
-            require("lspconfig").vtsls.setup({
-                filetypes = { 'vue', 'typescript', 'javascript', 'javascriptreact', 'typescriptreact' },
-                settings = {
-                    vtsls = {
-                        tsserver = {
-                            globalPlugins = {
-                                {
-                                    name = '@vue/typescript-plugin',
-                                    location = vim.fn.stdpath('data') ..
-                                        "/mason/packages/vue-language-server/node_modules/@vue/language-server",
-                                    languages = { 'vue' },
-                                    configNamespace = 'typescript',
-                                }
-                            },
-                        },
-                    },
-                },
-            })
+            -- vim.lsp.config("vtsls").setup({
+            --     filetypes = { 'vue', 'typescript', 'javascript', 'javascriptreact', 'typescriptreact' },
+            --     settings = {
+            --         vtsls = {
+            --             tsserver = {
+            --                 globalPlugins = {
+            --                     {
+            --                         name = '@vue/typescript-plugin',
+            --                         location = vim.fn.stdpath('data') ..
+            --                             "/mason/packages/vue-language-server/node_modules/@vue/language-server",
+            --                         languages = { 'vue' },
+            --                         configNamespace = 'typescript',
+            --                     }
+            --                 },
+            --             },
+            --         },
+            --     },
+            -- })
         end,
     },
 

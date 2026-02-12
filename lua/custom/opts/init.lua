@@ -23,6 +23,8 @@ o.shortmess:append 'sI' -- disable nvim intro
 o.termguicolors = true
 o.laststatus = 3 -- global statusline
 
+o.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
+
 -- go to previous/next line with h,l,left arrow and right arrow
 -- when cursor reaches end/beginning of line
 o.whichwrap:append '<>[]hl'

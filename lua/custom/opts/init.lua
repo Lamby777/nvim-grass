@@ -32,9 +32,7 @@ o.whichwrap:append "<>[]hl"
 -- Don't show the mode, since it's already in the status line
 o.showmode = false
 
-vim.schedule(function()
-    o.clipboard = "unnamedplus"
-end)
+vim.schedule(function() o.clipboard = "unnamedplus" end)
 
 -- Enable break indent
 o.breakindent = true

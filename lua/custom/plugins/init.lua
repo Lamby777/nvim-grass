@@ -55,12 +55,8 @@ return {
 
                 -- Actions
                 -- visual mode
-                map("v", "<leader>hs", function()
-                    gitsigns.stage_hunk { vim.fn.line ".", vim.fn.line "v" }
-                end, { desc = "git [s]tage hunk" })
-                map("v", "<leader>hr", function()
-                    gitsigns.reset_hunk { vim.fn.line ".", vim.fn.line "v" }
-                end, { desc = "git [r]eset hunk" })
+                map("v", "<leader>hs", function() gitsigns.stage_hunk { vim.fn.line ".", vim.fn.line "v" } end, { desc = "git [s]tage hunk" })
+                map("v", "<leader>hr", function() gitsigns.reset_hunk { vim.fn.line ".", vim.fn.line "v" } end, { desc = "git [r]eset hunk" })
                 -- normal mode
                 map("n", "<leader>hs", gitsigns.stage_hunk, { desc = "git [s]tage hunk" })
                 map("n", "<leader>hr", gitsigns.reset_hunk, { desc = "git [r]eset hunk" })
@@ -70,9 +66,7 @@ return {
                 map("n", "<leader>hp", gitsigns.preview_hunk, { desc = "git [p]review hunk" })
                 map("n", "<leader>hb", gitsigns.blame_line, { desc = "git [b]lame line" })
                 map("n", "<leader>hd", gitsigns.diffthis, { desc = "git [d]iff against index" })
-                map("n", "<leader>hD", function()
-                    gitsigns.diffthis "@"
-                end, { desc = "git [D]iff against last commit" })
+                map("n", "<leader>hD", function() gitsigns.diffthis "@" end, { desc = "git [D]iff against last commit" })
                 -- Toggles
                 map("n", "<leader>tb", gitsigns.toggle_current_line_blame, { desc = "[T]oggle git show [b]lame line" })
                 map("n", "<leader>tD", gitsigns.preview_hunk_inline, { desc = "[T]oggle git show [D]eleted" })
@@ -152,9 +146,7 @@ return {
 
                 -- `cond` is a condition used to determine whether this plugin should be
                 -- installed and loaded.
-                cond = function()
-                    return vim.fn.executable "make" == 1
-                end,
+                cond = function() return vim.fn.executable "make" == 1 end,
             },
 
             { "nvim-telescope/telescope-ui-select.nvim" },
@@ -282,9 +274,7 @@ return {
                 ensure_installed = { "cppdbg" },
                 automatic_installation = true,
                 handlers = {
-                    function(config)
-                        require("mason-nvim-dap").default_setup(config)
-                    end,
+                    function(config) require("mason-nvim-dap").default_setup(config) end,
                 },
             }
 
@@ -295,9 +285,7 @@ return {
                         name = "Launch file",
                         type = "cppdbg",
                         request = "launch",
-                        program = function()
-                            return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
-                        end,
+                        program = function() return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file") end,
                         cwd = "${workspaceFolder}",
                         stopAtEntry = false,
                         MIMode = "lldb",
@@ -310,9 +298,7 @@ return {
                         miDebuggerServerAddress = "localhost:1234",
                         miDebuggerPath = "/usr/bin/lldb",
                         cwd = "${workspaceFolder}",
-                        program = function()
-                            return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
-                        end,
+                        program = function() return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file") end,
                     },
                 },
             }
@@ -323,18 +309,10 @@ return {
 
             vim.fn.sign_define("DapBreakpoint", { text = "🐞" })
 
-            dap.listeners.before.attach.dapui_config = function()
-                ui.open()
-            end
-            dap.listeners.before.launch.dapui_config = function()
-                ui.open()
-            end
-            dap.listeners.before.event_terminated.dapui_config = function()
-                ui.close()
-            end
-            dap.listeners.before.event_exited.dapui_config = function()
-                ui.close()
-            end
+            dap.listeners.before.attach.dapui_config = function() ui.open() end
+            dap.listeners.before.launch.dapui_config = function() ui.open() end
+            dap.listeners.before.event_terminated.dapui_config = function() ui.close() end
+            dap.listeners.before.event_exited.dapui_config = function() ui.close() end
         end,
     },
 
@@ -410,9 +388,11 @@ return {
                     --
                     -- This may be unwanted, since they displace some of your code
                     if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
-                        map("<leader>th", function()
-                            vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
-                        end, "[T]oggle Inlay [H]ints")
+                        map(
+                            "<leader>th",
+                            function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf }) end,
+                          , "[T]oggle Inlay [H]ints"
+                        )
                     end
                 end,
             })
@@ -614,9 +594,7 @@ return {
         keys = {
             {
                 "<leader>fm",
-                function()
-                    require("conform").format { async = true, lsp_format = "fallback" }
-                end,
+                function() require("conform").format { async = true, lsp_format = "fallback" } end,
                 mode = "",
                 desc = "Format buffer",
             },
@@ -690,9 +668,7 @@ return {
                 dependencies = {
                     {
                         "rafamadriz/friendly-snippets",
-                        config = function()
-                            require("luasnip.loaders.from_vscode").lazy_load()
-                        end,
+                        config = function() require("luasnip.loaders.from_vscode").lazy_load() end,
                     },
                 },
             },
@@ -712,9 +688,7 @@ return {
 
             cmp.setup {
                 snippet = {
-                    expand = function(args)
-                        luasnip.lsp_expand(args.body)
-                    end,
+                    expand = function(args) luasnip.lsp_expand(args.body) end,
                 },
                 completion = { completeopt = "menu,menuone,noinsert" },
 
@@ -855,9 +829,7 @@ return {
             -- You can configure sections in the statusline by overriding their
             -- default behavior.
             ---@diagnostic disable-next-line: duplicate-set-field
-            statusline.section_location = function()
-                return "Line %2l Col %-2v | " .. require("timewasted").get_fmt() .. " "
-            end
+            statusline.section_location = function() return "Line %2l Col %-2v | " .. require("timewasted").get_fmt() .. " " end
         end,
     },
 
@@ -1164,9 +1136,7 @@ return {
     {
         "NvChad/base46",
         branch = "v2.0",
-        build = function()
-            require("base46").load_all_highlights()
-        end,
+        build = function() require("base46").load_all_highlights() end,
     },
 
     {
@@ -1202,26 +1172,16 @@ return {
             -- default: https://github.com/willothy/nvim-cokeline/blob/main/lua/cokeline/config.lua
             components = {
                 {
-                    text = function(buffer)
-                        return "  " .. buffer.devicon.icon
-                    end,
-                    fg = function(buffer)
-                        return buffer.devicon.color
-                    end,
+                    text = function(buffer) return "  " .. buffer.devicon.icon end,
+                    fg = function(buffer) return buffer.devicon.color end,
                 },
                 {
-                    text = function(buffer)
-                        return buffer.unique_prefix
-                    end,
-                    fg = function()
-                        return require("cokeline.hlgroups").get_hl_attr("Comment", "fg")
-                    end,
+                    text = function(buffer) return buffer.unique_prefix end,
+                    fg = function() return require("cokeline.hlgroups").get_hl_attr("Comment", "fg") end,
                     italic = true,
                 },
                 {
-                    text = function(buffer)
-                        return buffer.filename
-                    end,
+                    text = function(buffer) return buffer.filename end,
                     underline = function(buffer)
                         if buffer.is_hovered and not buffer.is_focused then
                             return true
@@ -1229,9 +1189,7 @@ return {
                     end,
                 },
                 {
-                    text = function(buffer)
-                        return "    " .. (buffer.is_modified and "" or " ") .. "  "
-                    end,
+                    text = function(buffer) return "    " .. (buffer.is_modified and "" or " ") .. "  " end,
                 },
             },
         },

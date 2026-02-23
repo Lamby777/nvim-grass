@@ -65,9 +65,7 @@ map("<leader>rh", "<cmd>Gitsigns reset_hunk<CR>", "Reset hunk")
 map("<leader>gb", "<cmd>Gitsigns blame_line<CR>", "Blame line")
 map("<leader>td", "<cmd>Gitsigns toggle_deleted<CR>", "Toggle deleted")
 
-map("<leader>dt", function()
-    require("dap").toggle_breakpoint()
-end, "Toggle Breakpoint")
+map("<leader>dt", function() require("dap").toggle_breakpoint() end, "Toggle Breakpoint")
 --     "<leader>dc",
 --     function()
 --         require("dap").continue()
@@ -137,9 +135,7 @@ map("<leader>x", "<cmd>Bd<CR>", "Close Tab")
 map("<leader>X", "<cmd>Bd!<CR>", "Close Tab (Force)")
 
 -- Comment toggling
-map("<leader>/", function()
-    require("Comment.api").toggle.linewise.current()
-end, "Toggle comment")
+map("<leader>/", function() require("Comment.api").toggle.linewise.current() end, "Toggle comment")
 
 map("<leader>/", "<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>", "Toggle comment", { "v" })
 
@@ -172,9 +168,7 @@ map("<leader>n", "<cmd>set nu!<CR>", "Toggle line number")
 map("<leader>rn", "<cmd>set rnu!<CR>", "Toggle relative number")
 
 -- LSP formatting
-map("<leader>fm", function()
-    vim.lsp.buf.format { async = true }
-end, "LSP formatting")
+map("<leader>fm", function() vim.lsp.buf.format { async = true } end, "LSP formatting")
 
 -- Terminal mode escape
 map("<C-x>", vim.api.nvim_replace_termcodes("<C-\\><C-N>", true, true, true), "Escape terminal mode", { "t" })
@@ -187,15 +181,9 @@ map(">", ">gv", "Indent line", { "v" })
 map("p", 'p:let @+=@0<CR>:let @"=@0<CR>', "Don't copy replaced text", { "x" })
 
 -- nvterm stuff
-map("<A-i>", function()
-    require("nvterm.terminal").toggle "float"
-end, "Toggle floating term", { "n", "t" })
-map("<A-h>", function()
-    require("nvterm.terminal").toggle "horizontal"
-end, "Toggle horizontal term", { "n", "t" })
-map("<A-v>", function()
-    require("nvterm.terminal").toggle "vertical"
-end, "Toggle vertical term", { "n", "t" })
+map("<A-i>", function() require("nvterm.terminal").toggle "float" end, "Toggle floating term", { "n", "t" })
+map("<A-h>", function() require("nvterm.terminal").toggle "horizontal" end, "Toggle horizontal term", { "n", "t" })
+map("<A-v>", function() require("nvterm.terminal").toggle "vertical" end, "Toggle vertical term", { "n", "t" })
 
 -- TODO change these into vim.keymap.set later
 vim.cmd [[

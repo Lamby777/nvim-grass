@@ -525,7 +525,7 @@ return {
             "nvim-treesitter/nvim-treesitter",
         },
         keys = {
-            { "<Leader><Leader>c", ":CellularAutomaton make_it_rain<CR>" },
+            { "<Leader>skibidi", ":CellularAutomaton make_it_rain<CR>" },
         },
     },
 

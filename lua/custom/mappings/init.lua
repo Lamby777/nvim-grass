@@ -66,53 +66,21 @@ map("<leader>gb", "<cmd>Gitsigns blame_line<CR>", "Blame line")
 map("<leader>td", "<cmd>Gitsigns toggle_deleted<CR>", "Toggle deleted")
 
 map("<leader>dt", function() require("dap").toggle_breakpoint() end, "Toggle Breakpoint")
---     "<leader>dc",
---     function()
---         require("dap").continue()
---     end,
---     desc = "Continue",
--- }, "<leader>di",
---     function()
---         require("dap").step_into()
---     end,
---     desc = "Step Into",
--- }, "<leader>do",
---     function()
---         require("dap").step_over()
---     end,
---     desc = "Step Over",
--- }, "<leader>du",
---     function()
---         require("dap").step_out()
---     end,
---     desc = "Step Out",
--- }, "<leader>dr",
---     function()
---         require("dap").repl.open()
---     end,
---     desc = "Open REPL",
--- }, "<leader>dl",
---     function()
---         require("dap").run_last()
---     end,
---     desc = "Run Last",
--- }, "<leader>dq",
---     function()
---         require("dap").terminate()
---         require("dapui").close()
---         require("nvim-dap-virtual-text").toggle()
---     end,
---     desc = "Terminate",
--- }, "<leader>db",
---     function()
---         require("dap").list_breakpoints()
---     end,
---     desc = "List Breakpoints",
--- }, "<leader>de",
---     function()
---         require("dap").set_exception_breakpoints({ "all" })
---     end,
---     desc = "Set Exception Breakpoints",
+map("<leader>dc", function() require("dap").continue() end, "Continue")
+map("<leader>di", function() require("dap").step_into() end, "Step Into")
+map("<leader>do", function() require("dap").step_over() end, "Step Over")
+map("<leader>du", function() require("dap").step_out() end, "Step Out")
+map("<leader>dr", function() require("dap").repl.open() end, "Open REPL")
+map("<leader>dl", function() require("dap").run_last() end, "Run Last")
+
+map("<leader>dq", function()
+    require("dap").terminate()
+    require("dapui").close()
+    require("nvim-dap-virtual-text").toggle()
+end, "Quit Debugging")
+
+map("<leader>db", function() require("dap").list_breakpoints() end, "List Breakpoints")
+map("<leader>de", function() require("dap").set_exception_breakpoints { "all" } end, "Set Exception Breakpoints")
 
 -- Visual mode mappings
 map("<leader>re", 'c<C-O>:set ri<CR><C-R>"<Esc>:set nori<CR>', "Reverse Selection", { "v" }, { nowait = true, noremap = true })

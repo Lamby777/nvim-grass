@@ -45,7 +45,7 @@ map("<leader>cl", "S<Esc>", "Clear Line")
 map("<leader>cm", "<cmd>Telescope git_commits<CR>", "Git commits")
 map("<leader>gs", "<cmd>Telescope git_status<CR>", "Git status")
 map("<leader>pt", "<cmd>Telescope terms<CR>", "Pick hidden term")
-map("<leader>th", "<cmd>Telescope themes<CR>", "Search nvim themes")
+map("<leader>tq", "<cmd>Telescope colorscheme<CR>", "Search nvim themes")
 map("<leader>ma", "<cmd>Telescope marks<CR>", "telescope bookmarks")
 
 map("<leader>hl", "<cmd>Telescope highlights<cr>", "Treesitter highlights")

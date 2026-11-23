@@ -429,6 +429,7 @@ return {
                 -- 'efm',
                 "gdtoolkit",
                 "jdtls",
+                "kotlin-lsp",
                 "omnisharp",
                 "zls",
                 -- 'nginx-language-server',

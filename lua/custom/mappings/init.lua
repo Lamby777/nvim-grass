@@ -69,7 +69,7 @@ map("<leader>td", "<cmd>Gitsigns toggle_deleted<CR>", "Toggle deleted")
 map("<leader>re", 'c<C-O>:set ri<CR><C-R>"<Esc>:set nori<CR>', "Reverse Selection", { "v" }, { nowait = true, noremap = true })
 
 -- Terminal mode mappings
-map("<Esc>", "<C-\\><C-n>", "Escape Terminal", { "t" }, { silent = true })
+map("<Esc>", "<Esc>", "Send Esc to terminal", { "t" }, { silent = true, noremap = true })
 
 -- Window navigation
 map("<C-h>", "<C-w><C-h>", "Move focus to the left window")
